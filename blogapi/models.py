@@ -8,6 +8,5 @@ class BlogModel(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     content = models.TextField()
-    published = models.DateTimeField(default=timezone.now)
+    published_at = models.DateTimeField(default=timezone.now)
 
-    
