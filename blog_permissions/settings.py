@@ -46,10 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5
-}
+
 
 
 MIDDLEWARE = [
@@ -137,7 +134,9 @@ django_heroku.settings(locals())
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
          "rest_framework.permissions.IsAuthenticatedOrReadOnly",
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
 }
 
 CORS_ALLOWED_ORIGINS =[
