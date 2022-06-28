@@ -2,6 +2,7 @@
 from rest_framework import generics
 from .models import BlogModel
 from .serializations import BlogSerializers
+from rest_framework import filters
 from rest_framework.permissions import BasePermission, DjangoModelPermissionsOrAnonReadOnly,SAFE_METHODS
 
 class BlogUserwritePermissions(BasePermission):
@@ -15,8 +16,12 @@ class BlogList(generics.ListCreateAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = BlogModel.objects.all()
     serializer_class = BlogSerializers
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=title', '^title']
 
 class BlogDetail(generics.RetrieveUpdateDestroyAPIView, BlogUserwritePermissions):
     permission_classes = [BlogUserwritePermissions]
     queryset = BlogModel.objects.all()
     serializer_class = BlogSerializers
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=title', '^title']
