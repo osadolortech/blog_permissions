@@ -132,7 +132,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -145,3 +145,4 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS =[
     "http://localhost:8000"
 ]
+django_heroku.settings(locals())
