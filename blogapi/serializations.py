@@ -38,6 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 class BlogSerializers(serializers.ModelSerializer):
+    
     class Meta:
         model = BlogModel
         fields = (
