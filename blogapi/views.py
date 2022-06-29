@@ -1,9 +1,24 @@
 
 from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth.models import User
 from .models import BlogModel
-from .serializations import BlogSerializers
+from .serializations import BlogSerializers,RegisterSerilizer,UserSerializer
 from rest_framework import filters
-from rest_framework.permissions import BasePermission, DjangoModelPermissionsOrAnonReadOnly,SAFE_METHODS, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import BasePermission,AllowAny,SAFE_METHODS, IsAuthenticatedOrReadOnly
+
+
+class UserDetailAPI(APIView):
+    permission_classes = [AllowAny]
+    def get(self, request,*args,**kwargs):
+        user = User.objects.get(author=request.user.id)
+        serializer= UserSerializer(user)
+        return Response(serializer.data)
+
+class RegisterUserApi(generics.CreateAPIView):
+    permission_classes = [AllowAny]
+    serializer_class =RegisterSerilizer
 
 class BlogUserwritePermissions(BasePermission):
     message = "Editing post is retricted to to the author only"
