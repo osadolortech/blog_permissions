@@ -3,7 +3,7 @@ from rest_framework import generics
 from .models import BlogModel
 from .serializations import BlogSerializers
 from rest_framework import filters
-from rest_framework.permissions import BasePermission, DjangoModelPermissionsOrAnonReadOnly,SAFE_METHODS
+from rest_framework.permissions import BasePermission, DjangoModelPermissionsOrAnonReadOnly,SAFE_METHODS, IsAuthenticatedOrReadOnly
 
 class BlogUserwritePermissions(BasePermission):
     message = "Editing post is retricted to to the author only"
@@ -13,7 +13,7 @@ class BlogUserwritePermissions(BasePermission):
         return obj.author == request.user
 
 class BlogList(generics.ListCreateAPIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = BlogModel.objects.all()
     serializer_class = BlogSerializers
     filter_backends = [filters.SearchFilter]
