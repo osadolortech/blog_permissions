@@ -1,2 +1,2 @@
 release: python manage.py migrate --no-input
-web gunicorn blogapi.wsgi:application --log-file -
+web gunicorn blog_permissions.wsgi:application --log-file -
