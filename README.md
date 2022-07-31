@@ -12,6 +12,9 @@ You can find out the path to your python3 interpreter with the command which pyt
 
 Set up .env file by duplicating the .env file(and editing if required).
 
+# Documentation
+https://documenter.getpostman.com/view/18963336/Uze1uisV
+
 Activate the environment and install dependencies.
 
 Linux
