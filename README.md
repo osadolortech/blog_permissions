@@ -12,6 +12,9 @@ You can find out the path to your python3 interpreter with the command which pyt
 
 Set up .env file by duplicating the .env file(and editing if required).
 
+# Apllication
+http://blog-perm.herokuapp.com/api/
+
 # Documentation
 https://documenter.getpostman.com/view/18963336/Uze1uisV
 
